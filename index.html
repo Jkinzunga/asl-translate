@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASL Translator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+        #translator-container {
+            width: 400px;
+            margin: 0 auto;
+        }
+        #inputText {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        #aslImages {
+            display: flex;
+            justify-content: center;
+        }
+        #aslImages img {
+            width: 100px;
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>ASL Translator</h1>
+    
+    <div id="translator-container">
+        <input type="text" id="inputText" placeholder="Enter text to see ASL images" onkeypress="handleKeyPress(event)">
+        <button onclick="showASLImages()">Submit</button>
+        <div id="aslImages"></div>
+    </div>
+
+    <script>
+        function handleKeyPress(event) {
+            // Check if the Enter key (key code 13) was pressed
+            if (event.keyCode === 13) {
+                showASLImages();
+            }
+        }
+
+        function showASLImages() {
+            var inputText = document.getElementById('inputText').value;
+            var aslImagesContainer = document.getElementById('aslImages');
+
+            // Simulate image display (replace with actual mapping logic)
+            var aslImages = simulateASLImages(inputText);
+
+            // Clear previous images
+            aslImagesContainer.innerHTML = '';
+
+            // Display ASL images
+            aslImages.forEach(function(imageSrc) {
+                var img = document.createElement('img');
+                img.src = imageSrc;
+                aslImagesContainer.appendChild(img);
+            });
+        }
+
+        function simulateASLImages(text) {
+            // This is a placeholder function for simulation. You would replace this
+            // with a real mapping logic or use an API that provides ASL images.
+            // For simplicity, this example uses a limited set of predefined images.
+            var aslImages = {
+                A: 'img/a.png',
+                B: 'img/b.png',
+                C: 'img/c.png',
+                D: 'img/d.png',
+                E: 'img/e.png',
+                F: 'img/f.png',
+                G: 'img/g.png',
+                H: 'img/h.png',
+                I: 'img/i.png',
+                J: 'img/j.png',
+                K: 'img/k.png',
+                L: 'img/l.png',
+                M: 'img/m.png',
+                N: 'img/n.png',
+                O: 'img/o.png',
+                P: 'img/p.png',
+                Q: 'img/q.png',
+                R: 'img/r.png',
+                S: 'img/s.png',
+                T: 'img/t.png',
+                U: 'img/u.png',
+                V: 'img/v.png',
+                W: 'img/w.png',
+                X: 'img/x.png',
+                Y: 'img/y.png',
+                Z: 'img/z.png',
+                // Add more mappings as needed
+            };
+
+            var upperCaseText = text.toUpperCase();
+            var imagesToShow = [];
+
+            for (var i = 0; i < upperCaseText.length; i++) {
+                var currentChar = upperCaseText.charAt(i);
+                if (aslImages[currentChar]) {
+                    imagesToShow.push(aslImages[currentChar]);
+                }
+            }
+
+            return imagesToShow;
+        }
+    </script>
+</body>
+</html>
